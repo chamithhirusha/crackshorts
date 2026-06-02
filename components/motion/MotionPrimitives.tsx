@@ -1,7 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { m, type Transition } from "framer-motion";
+import {
+  m,
+  type HTMLMotionProps,
+  type Transition,
+} from "framer-motion";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -10,9 +14,13 @@ const baseTransition: Transition = {
   ease: smoothEase,
 };
 
-type MotionMainProps = React.ComponentPropsWithoutRef<"main">;
+type MotionMainProps = HTMLMotionProps<"main">;
 
-export function MotionMain({ className, children, ...props }: MotionMainProps) {
+export function MotionMain({
+  className,
+  children,
+  ...props
+}: MotionMainProps) {
   return (
     <m.main
       className={cn(className)}
@@ -26,7 +34,7 @@ export function MotionMain({ className, children, ...props }: MotionMainProps) {
   );
 }
 
-type MotionSectionProps = React.ComponentPropsWithoutRef<"section"> & {
+type MotionSectionProps = HTMLMotionProps<"section"> & {
   delay?: number;
   once?: boolean;
   amount?: number;
@@ -56,7 +64,7 @@ export function MotionSection({
   );
 }
 
-type MotionDivProps = React.ComponentPropsWithoutRef<"div"> & {
+type MotionDivProps = HTMLMotionProps<"div"> & {
   delay?: number;
   once?: boolean;
   amount?: number;
