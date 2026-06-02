@@ -1,6 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  MotionDiv,
+  MotionMain,
+  MotionSection,
+} from "@/components/motion/MotionPrimitives";
+import {
   DatabaseZapIcon,
   RocketIcon,
   StoneIcon,
@@ -50,37 +55,43 @@ export default function Home() {
   } as const;
 
   return (
-    <main>
-      <section
+    <MotionMain>
+      <MotionSection
         id="hero"
         className="flex flex-col items-center justify-center gap-10 pt-40 pb-5 px-4"
       >
-        <Badge variant="destructive">
-          <RocketIcon className="inline-block mr-2" />
-          <span className="text-destructive">
-            More than 20M shorts scheduled.
-          </span>
-        </Badge>
-        <div className="flex flex-col items-center justify-center text-center">
+        <MotionDiv>
+          <Badge variant="destructive">
+            <RocketIcon className="inline-block mr-2" />
+            <span className="text-destructive">
+              More than 20M shorts scheduled.
+            </span>
+          </Badge>
+        </MotionDiv>
+        <MotionDiv className="flex flex-col items-center justify-center text-center" delay={0.06}>
           <h1 className="text-4xl sm:text-6xl lg:text-8xl text-center">
             Bulk video scheduling
           </h1>
           <h1 className="text-4xl sm:text-6xl lg:text-8xl text-muted-foreground text-center">
             made simple.
           </h1>
-        </div>
+        </MotionDiv>
         <hr className="w-11/12 max-w-4xl border-muted" />
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+        <MotionDiv
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          delay={0.14}
+        >
           <Button className="w-full sm:w-auto">Let&apos;s get started</Button>
           <Button variant="link" className="w-full sm:w-auto">
             Contribute on GitHub
           </Button>
-        </div>
-      </section>
+        </MotionDiv>
+      </MotionSection>
 
-      <section
+      <MotionSection
         id="hero-image"
         className="relative flex items-center justify-center pt-10 px-4"
+        delay={0.05}
       >
         <div className="relative w-full">
           <Image
@@ -92,33 +103,39 @@ export default function Home() {
           />
           <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/80 via-black/20 to-black/40 pointer-events-none" />
         </div>
-      </section>
+      </MotionSection>
 
-      <section
+      <MotionSection
         id="how-it-works"
         className="relative min-h-screen flex flex-col items-center justify-center py-40 px-4 overflow-hidden"
+        amount={0.15}
       >
         {/* background glow */}
         <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/20 blur-3xl rounded-full pointer-events-none" />
         <div className="absolute bottom-[-120px] right-[-120px] w-[500px] h-[500px] bg-blue-500/20 blur-3xl rounded-full pointer-events-none" />
-        <div className="flex flex-col items-center justify-center text-center gap-3 max-w-2xl relative z-10">
+        <MotionDiv
+          className="flex flex-col items-center justify-center text-center gap-3 max-w-2xl relative z-10"
+          amount={0.4}
+        >
           <h3 className="text-sm uppercase tracking-widest text-muted-foreground">
             Process
           </h3>
           <h1 className="text-4xl sm:text-5xl font-semibold text-center">
             How it works
           </h1>
-        </div>
+        </MotionDiv>
         <div className="mt-20 w-full max-w-6xl relative z-10">
           {/* connector line (desktop) */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-muted" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 relative">
-            {howItWorksSteps.map((step) => {
+            {howItWorksSteps.map((step, index) => {
               const Icon = iconMap[step.icon as keyof typeof iconMap];
               return (
-                <div
+                <MotionDiv
                   key={step.id}
                   className="relative flex flex-col items-center text-center gap-4 px-6 py-15 rounded-2xl border bg-background/40 backdrop-blur-md hover:shadow-xl transition"
+                  delay={0.08 + index * 0.1}
+                  amount={0.4}
                 >
                   <div className="absolute -top-3 flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-sm font-medium">
                     {step.id}
@@ -137,12 +154,12 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground">
                     {step.description}
                   </p>
-                </div>
+                </MotionDiv>
               );
             })}
           </div>
         </div>
-      </section>
-    </main>
+      </MotionSection>
+    </MotionMain>
   );
 }
