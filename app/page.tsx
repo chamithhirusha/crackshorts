@@ -96,7 +96,7 @@ export default function Home() {
 
       <section
         id="how-it-works"
-        className="relative flex flex-col items-center justify-center py-40 px-4 overflow-hidden"
+        className="relative min-h-screen flex flex-col items-center justify-center py-40 px-4 overflow-hidden"
       >
         {/* background glow */}
         <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/20 blur-3xl rounded-full pointer-events-none" />
