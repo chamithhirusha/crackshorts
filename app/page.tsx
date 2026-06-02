@@ -80,7 +80,7 @@ export default function Home() {
 
       <section
         id="hero-image"
-        className="relative flex items-center justify-center py-10 px-4"
+        className="relative flex items-center justify-center pt-10 px-4"
       >
         <div className="relative w-full">
           <Image
@@ -96,7 +96,7 @@ export default function Home() {
 
       <section
         id="how-it-works"
-        className="relative flex flex-col items-center justify-center py-32 px-4 overflow-hidden"
+        className="relative flex flex-col items-center justify-center py-40 px-4 overflow-hidden"
       >
         {/* background glow */}
         <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/20 blur-3xl rounded-full pointer-events-none" />
@@ -120,7 +120,7 @@ export default function Home() {
                   key={step.id}
                   className="relative flex flex-col items-center text-center gap-4 px-6 py-15 rounded-2xl border bg-background/40 backdrop-blur-md hover:shadow-xl transition"
                 >
-                  <div className="absolute -top-4 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-medium">
+                  <div className="absolute -top-3 flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-sm font-medium">
                     {step.id}
                   </div>
                   <Icon
