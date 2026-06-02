@@ -37,25 +37,7 @@ export default function Navbar() {
                 asChild
                 className={navigationMenuTriggerStyle()}
               >
-                <Link href="/features">Features</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
-                <Link href="/pricing">Pricing</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
-                <Link href="/docs">Docs</Link>
+                <Link href="/#how-it-works">How it works</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -74,16 +56,8 @@ export default function Navbar() {
             <SheetContent side="right" className="w-[250px] p-6">
               <SheetTitle className="sr-only">Menu</SheetTitle>
               <div className="flex flex-col gap-4 mt-6">
-                <Link href="/features" className="text-sm">
-                  Features
-                </Link>
-
-                <Link href="/pricing" className="text-sm">
-                  Pricing
-                </Link>
-
-                <Link href="/docs" className="text-sm">
-                  Docs
+                <Link href="/#how-it-works" className="text-sm">
+                  How it works
                 </Link>
 
                 <Button className="mt-4">Get Started</Button>
