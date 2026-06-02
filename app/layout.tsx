@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import LenisProvider from "@/components/providers/LenisProvider";
+import FramerProvider from "@/components/providers/FramerProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,9 +40,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <LenisProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <FramerProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </FramerProvider>
         </LenisProvider>
       </body>
     </html>

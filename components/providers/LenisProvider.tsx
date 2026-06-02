@@ -9,6 +9,17 @@ export default function LenisProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
+    const navigationEntry = performance
+      .getEntriesByType("navigation")
+      .at(0) as PerformanceNavigationTiming | undefined;
+
+    if (navigationEntry?.type === "reload") {
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -23,6 +34,10 @@ export default function LenisProvider({
       syncTouch: false,
     });
 
+    if (navigationEntry?.type === "reload") {
+      lenis.scrollTo(0, { immediate: true, force: true });
+    }
+
     let rafId = 0;
 
     const raf = (time: number) => {
@@ -35,6 +50,10 @@ export default function LenisProvider({
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "auto";
+      }
     };
   }, []);
 
