@@ -1,10 +1,10 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   MotionDiv,
   MotionMain,
   MotionSection,
 } from "@/components/motion/MotionPrimitives";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DatabaseZapIcon,
   RocketIcon,
@@ -12,6 +12,7 @@ import {
   TimerIcon,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const howItWorksSteps = [
@@ -68,7 +69,10 @@ export default function Home() {
             </span>
           </Badge>
         </MotionDiv>
-        <MotionDiv className="flex flex-col items-center justify-center text-center" delay={0.06}>
+        <MotionDiv
+          className="flex flex-col items-center justify-center text-center"
+          delay={0.06}
+        >
           <h1 className="text-4xl sm:text-6xl lg:text-8xl text-center">
             Bulk video scheduling
           </h1>
@@ -81,10 +85,22 @@ export default function Home() {
           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           delay={0.14}
         >
-          <Button className="w-full sm:w-auto">Let&apos;s get started</Button>
-          <Button variant="link" className="w-full sm:w-auto">
-            Contribute on GitHub
-          </Button>
+          <Link href="/signin">
+            <Button className="w-full sm:w-auto">
+              Connect YouTube Channel
+            </Button>
+          </Link>
+          <Link
+            href={
+              process.env.GITHUB_REPO || "https://github.com/chamithhirusha"
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="link" className="w-full sm:w-auto">
+              Contribute on GitHub
+            </Button>
+          </Link>
         </MotionDiv>
       </MotionSection>
 
