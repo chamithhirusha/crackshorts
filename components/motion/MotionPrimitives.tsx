@@ -1,11 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  m,
-  type HTMLMotionProps,
-  type Transition,
-} from "framer-motion";
+import { m, type HTMLMotionProps, type Transition } from "framer-motion";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -16,11 +12,7 @@ const baseTransition: Transition = {
 
 type MotionMainProps = HTMLMotionProps<"main">;
 
-export function MotionMain({
-  className,
-  children,
-  ...props
-}: MotionMainProps) {
+export function MotionMain({ className, children, ...props }: MotionMainProps) {
   return (
     <m.main
       className={cn(className)}

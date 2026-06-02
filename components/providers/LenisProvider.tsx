@@ -9,9 +9,9 @@ export default function LenisProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    const navigationEntry = performance
-      .getEntriesByType("navigation")
-      .at(0) as PerformanceNavigationTiming | undefined;
+    const navigationEntry = performance.getEntriesByType("navigation").at(0) as
+      | PerformanceNavigationTiming
+      | undefined;
 
     if (navigationEntry?.type === "reload") {
       if ("scrollRestoration" in history) {

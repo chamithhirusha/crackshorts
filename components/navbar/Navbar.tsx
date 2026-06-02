@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { Menu, StoneIcon } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuList,
   NavigationMenuLink,
+  NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
@@ -45,7 +45,9 @@ export default function Navbar() {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2">
-          <Button className="hidden md:inline-flex">Get Started</Button>
+          <Link href="/signin">
+            <Button className="hidden md:inline-flex">Get Started</Button>
+          </Link>
 
           {/* Mobile menu */}
           <Sheet>
@@ -60,7 +62,9 @@ export default function Navbar() {
                   How it works
                 </Link>
 
-                <Button className="mt-4">Get Started</Button>
+                <Link href="/signin" className="text-sm">
+                  <Button className="mt-4">Get Started</Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
