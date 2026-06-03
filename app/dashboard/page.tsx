@@ -6,9 +6,14 @@ import ContentGrid from "@/components/pages/dashboard/ContentGrid";
 import { Button } from "@/components/ui/button";
 import { useResponsive } from "@/hooks/useResponsive";
 import { Layout } from "@/utils/enums";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
+  const router = useRouter();
+  const { status } = useSession();
+
   const { isMobile } = useResponsive();
   const [desktopLayout, setDesktopLayout] = useState<Layout>(Layout.LIST);
 
@@ -19,6 +24,26 @@ export default function Dashboard() {
       setDesktopLayout(value);
     }
   };
+
+  const fetchData = async () => {
+    const res = await fetch("/api/youtube/videos");
+    const data = await res.json();
+
+    console.log("Channel:", data.channel);
+    console.log("Videos:", data.videos);
+  };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetchData();
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/signin");
+    }
+  }, [status, router]);
 
   return (
     <div className="flex flex-col min-h-screen items-center gap-10 px-4 py-8 sm:px-6 md:px-8 lg:px-12 xl:px-20">
