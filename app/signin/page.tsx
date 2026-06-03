@@ -1,5 +1,8 @@
+"use client";
+
 import { MotionDiv, MotionSection } from "@/components/motion/MotionPrimitives";
 import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 
 export default function SignIn() {
@@ -24,9 +27,12 @@ export default function SignIn() {
         className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
         delay={0.14}
       >
-        <Link href="/signin">
-          <Button className="w-full sm:w-auto">Connect</Button>
-        </Link>
+        <Button
+          className="w-full sm:w-auto"
+          onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+        >
+          Connect
+        </Button>
         <Link href="/">
           <Button variant="link" className="w-full sm:w-auto">
             Back to Homepage

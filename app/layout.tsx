@@ -1,10 +1,8 @@
-import RouteChrome from "@/components/layout/RouteChrome";
-import FramerProvider from "@/components/providers/FramerProvider";
-import LenisProvider from "@/components/providers/LenisProvider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SessionProviderLocal from "./providers/SessionProviderLocal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,11 +37,7 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <LenisProvider>
-          <FramerProvider>
-            <RouteChrome>{children}</RouteChrome>
-          </FramerProvider>
-        </LenisProvider>
+        <SessionProviderLocal>{children}</SessionProviderLocal>
       </body>
     </html>
   );
